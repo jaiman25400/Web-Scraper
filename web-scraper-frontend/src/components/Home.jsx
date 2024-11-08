@@ -11,19 +11,17 @@ const Home = () => {
   };
 
   return (
-    <div className="home-outer-block">
-        <h2>Welcome to Webi Crawl</h2>
-
+    <div className="home-outer-block container-fluid">
         <form onSubmit={handleSubmit} className="url-form ">
           <input
             type="url"
-            placeholder="Enter a website URL"
+            placeholder="Enter a website URL..."
             value={url}
             onChange={(e) => setUrl(e.target.value)}
             className="url-input"
             required
           />
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-secondary  btn-lg btn-block">
             Submit
           </button>
         </form>
