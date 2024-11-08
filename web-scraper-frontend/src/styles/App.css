@@ -1,0 +1,10 @@
+.app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* Make the Home component take the remaining space */
+.app-container > *:last-child {
+    flex-grow: 1;
+}

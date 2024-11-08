@@ -1,0 +1,42 @@
+/* src/styles/Home.css */
+
+/* Apply a light blue background to the entire screen */
+.home-outer-block {
+    display: flex;
+    flex-direction: column;   
+    justify-content: center;  
+    align-items: center;      
+    background-color: #d5f5ff;  
+    padding: 0 20px;         
+    box-sizing: border-box;   
+  }
+  
+  .home-outer-block h2 {
+    margin-bottom: 5%;     
+    font-size: 2rem;       
+    text-align: center;      
+  }
+  
+  .url-form {
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    align-items: center;
+    gap: 15px;               
+    max-width: 100%;         
+    width: 25%;            
+    text-align: center;     
+  }
+  
+  /* Input field styling */
+  .url-input {
+    width: 100%;            
+    max-width: 100%;        
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ced4da; 
+    border-radius: 5px;
+  }
+  
+
+  
