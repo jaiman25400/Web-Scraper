@@ -1,13 +1,21 @@
 import React, { useState } from "react";
 import "../styles/Home.CSS"; // Import CSS file for styling (create this in the styles folder)
+import axios from "axios";
 
 const Home = () => {
   const [url, setUrl] = useState("");
 
   // Handler for submit button
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("URL submitted:", url);
+    try {
+      const res = await axios.post("http://127.0.0.1:5000//api/submit-url",{
+        url
+      })
+      console.log("Response : ",res.data)
+    } catch (error) {
+      console.log("Error :",error)
+    }
   };
 
   return (
