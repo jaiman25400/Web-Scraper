@@ -4,18 +4,14 @@
     flex-direction: column;   
     justify-content: center;  
     align-items: center;      
-    background-color: #c4f0fd;  
-    padding: 0 20px;         
-    box-sizing: border-box;   
+    background-color: #a8e5f8;  
   }
-  
+
   .url-form {
     display: flex;
     flex-direction: column;  
     justify-content: center;
-    align-items: center;
     gap: 15px;               
-    max-width: 100%;         
     width: 50%;            
     text-align: center;     
   }
@@ -25,9 +21,9 @@
     width: 100%;            
     max-width: 100%;        
     padding: 10px;
-    font-size: 1rem;
-    border: 1px solid #ced4da; 
-    border-radius: 15px;
+    font-size: 1.2rem;
+    border: 3px solid #ced4da; 
+    border-radius: 12px;
   }
   
 

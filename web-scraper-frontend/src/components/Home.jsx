@@ -19,7 +19,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home-outer-block container-fluid">
+    <div className="home-outer-block  ">
         <form onSubmit={handleSubmit} className="url-form ">
           <input
             type="url"
@@ -29,7 +29,8 @@ const Home = () => {
             className="url-input"
             required
           />
-          <button type="submit" className="btn btn-secondary  btn-lg btn-block">
+          
+          <button type="submit" className="btn btn-success  btn-md btn-block">
             Submit
           </button>
         </form>
