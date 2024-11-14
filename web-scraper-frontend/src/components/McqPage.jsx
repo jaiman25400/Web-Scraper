@@ -4,12 +4,14 @@ import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const McqPage = () => {
   const mcqData = useSelector((state) => state.mcq.questions.question_data);
   const [answers, setAnswers] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   // Log MCQ data on component mount
   useEffect(() => {
@@ -36,6 +38,7 @@ const McqPage = () => {
       });
       console.log("Response:", res.data);
       toast.success("Answers submitted successfully!");
+      navigate("/")
     } catch (error) {
       console.log("Error:", error);
       toast.error("Failed to submit answers. Please try again.");
@@ -50,9 +53,9 @@ const McqPage = () => {
       {mcqData ? (
         <>
           <h2 className="text-center">MCQ Questions</h2>
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} style={{ paddingTop : "2%" }}>
             {mcqData.map((mcq) => (
-              <div key={mcq.question} className="mb-4">
+              <div key={mcq.question} className="mb-4" style={{ paddingTop : "1%" }}>
                 <div>{mcq.question}</div>
                 <Form.Check
                   type="radio"
