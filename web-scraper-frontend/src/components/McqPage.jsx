@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 
 const McqPage = () => {
-  const mcqData = useSelector((state) => state.mcq.questions.question_data);
+  const mcqData = useSelector((state) => state.mcq.questions.mcq_data);
   const [answers, setAnswers] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -37,8 +37,10 @@ const McqPage = () => {
         answers,
       });
       console.log("Response:", res.data);
-      toast.success("Answers submitted successfully!");
-      navigate("/")
+      toast.success("Thank You For Your Response!", {
+        onClose: () => navigate("/"),  // Navigate to home after the toast closes
+        autoClose: 1500,  
+      });
     } catch (error) {
       console.log("Error:", error);
       toast.error("Failed to submit answers. Please try again.");
@@ -52,11 +54,11 @@ const McqPage = () => {
     <Container className="mt-4">
       {mcqData ? (
         <>
-          <h2 className="text-center">MCQ Questions</h2>
-          <Form onSubmit={handleSubmit} style={{ paddingTop : "2%" }}>
+          <h2 className="welcome-heading text-center ">MCQ Questions</h2>
+          <Form onSubmit={handleSubmit} style={{ paddingTop : "2%", paddingBottom: "3%" }} >
             {mcqData.map((mcq) => (
               <div key={mcq.question} className="mb-4" style={{ paddingTop : "1%" }}>
-                <div>{mcq.question}</div>
+                <div> Q) {mcq.question}</div>
                 <Form.Check
                   type="radio"
                   label={mcq.options.A}

@@ -4,7 +4,7 @@
     flex-direction: column;   
     justify-content: center;  
     align-items: center;      
-    background-color: #a8e5f8;  
+    background-color: #e5f5fc;  
   }
 
   .url-form {
@@ -22,8 +22,42 @@
     max-width: 100%;        
     padding: 10px;
     font-size: 1.2rem;
-    border: 3px solid #ced4da; 
+    border: 3px solid #bedbf8; 
     border-radius: 12px;
+  }
+  
+  .welcome-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #660058;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    text-align: center;    
+  }
+  
+  .welcome-description {
+    font-size: 1rem;
+    margin-bottom: 20px;
+    color: #34495e;
+    display: flex;
+    flex-direction: column;  
+    justify-content: center;
+    text-align: center;    
+    
+  }
+  
+  .url-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+  
+  .loading-spinner {
+    margin-top: 10px;
+    color: #000000;
   }
   
 
