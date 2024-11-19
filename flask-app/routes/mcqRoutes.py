@@ -87,15 +87,16 @@ def submit_answers():
         return jsonify({"error": "URL not found in the database"}), 404
 
     try:
+
+        result_data = classifyUser(responses)
         # Save user response
         user_response = UserResponse(
             url_id=url_record.id,
-            response_data=responses
+            response_data=responses,
+            classify_user = result_data
         )
         db.session.add(user_response)
-        db.session.commit()
-
-        result_data = classifyUser(responses)
+        db.session.commit()        
         return jsonify({"message": "Answer received successfully!","Result ":result_data}), 200
     
     except Exception as e:

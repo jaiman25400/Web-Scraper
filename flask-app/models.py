@@ -26,5 +26,6 @@ class UserResponse(db.Model):
     __tablename__ = 'user_responses'
     id = db.Column(db.Integer, primary_key=True)
     url_id = db.Column(db.Integer, db.ForeignKey('urls.id'), nullable=False)  # Foreign key to link to URLs
+    classify_user = db.Column(db.String(128), nullable=True)  # Track individual users (e.g., session ID)
     response_data = db.Column(db.JSON, nullable=False)  # Store user answers in JSON
     created_at = db.Column(db.DateTime, server_default=db.func.now())
