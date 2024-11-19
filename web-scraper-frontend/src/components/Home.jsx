@@ -26,7 +26,7 @@ const Home = () => {
       });
       console.log("Response : ", res.data);
       dispatch(setQuestions(res.data));
-      navigate("/mcq"); // Redirect to MCQ page
+      navigate("/mcq", { state: { url } });
     } catch (error) {
       console.log("Error :", error);
       toast.error("Failed to submit URL. Please try again.");

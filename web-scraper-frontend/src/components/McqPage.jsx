@@ -4,7 +4,8 @@ import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
+
 
 const McqPage = () => {
   const mcqData = useSelector((state) => state.mcq.questions.mcq_data);
@@ -12,10 +13,12 @@ const McqPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const { url } = location.state || {}; // Access the data from state
 
   // Log MCQ data on component mount
   useEffect(() => {
-    console.log("MCQ data:", mcqData);
+    console.log("MCQ data:", mcqData,url);
   }, [mcqData]);
 
   // Handle option selection
@@ -35,6 +38,7 @@ const McqPage = () => {
     try {
       const res = await axios.post("http://127.0.0.1:5000/api/submit-answers", {
         answers,
+        url
       });
       console.log("Response:", res.data);
       toast.success("Thank You For Your Response!", {
