@@ -48,7 +48,7 @@ def submit_url():
             # Convert mcq_data_serialized to JSON string before storing
             redis_client.set(existing_url.url, json.dumps({
                 "mcq_data": mcq_data_serialized
-            }), ex=3600)  # Optional: Add expiration time (e.g., 3600 seconds)
+            }))  # Optional: Add expiration time (e.g., 3600 seconds)
 
             print("Data cached successfully in Redis.")
 
