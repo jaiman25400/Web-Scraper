@@ -7,6 +7,7 @@ from flask_migrate import Migrate  # Import Migrate
 from models import db
 import os
 
+
 app = Flask(__name__)
 CORS(app)  # Enable CORS to allow React to communicate with Flask
 
