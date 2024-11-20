@@ -2,7 +2,6 @@
 from flask import Flask
 from flask_cors import CORS
 from routes.mcqRoutes import mcq_routes # Importing the mcq_routes blueprint
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate  # Import Migrate
 from models import db
 import os
