@@ -4,8 +4,7 @@ import { Button, Container, Form } from "react-bootstrap";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate,useLocation } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 
 const McqPage = () => {
   const mcqData = useSelector((state) => state.mcq.questions.mcq_data);
@@ -14,14 +13,12 @@ const McqPage = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  const { url } = location.state || {}; // Access the data from state
+  const { url } = location.state || {};
 
-  // Log MCQ data on component mount
   useEffect(() => {
-    console.log("MCQ data:", mcqData,url);
+    console.log("MCQ data:", mcqData, url);
   }, [mcqData]);
 
-  // Handle option selection
   const handleOptionChange = (questionId, option) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -29,21 +26,20 @@ const McqPage = () => {
     }));
   };
 
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     setLoading(true);
-    console.log("User Ans : ",answers)
+    console.log("User Answers:", answers);
     try {
       const res = await axios.post("http://127.0.0.1:5000/api/submit-answers", {
         answers,
-        url
+        url,
       });
       console.log("Response:", res.data);
       toast.success("Thank You For Your Response!", {
-        onClose: () => navigate("/"),  // Navigate to home after the toast closes
-        autoClose: 1500,  
+        onClose: () => navigate("/"),
+        autoClose: 1500,
       });
     } catch (error) {
       console.log("Error:", error);
@@ -58,42 +54,43 @@ const McqPage = () => {
     <Container className="mt-4">
       {mcqData ? (
         <>
-          <h2 className="welcome-heading text-center ">MCQ Questions</h2>
-          <Form onSubmit={handleSubmit} style={{ paddingTop : "2%", paddingBottom: "3%" }} >
+          <h2 className="welcome-heading text-center">MCQ Questions</h2>
+          <Form
+            onSubmit={handleSubmit}
+            style={{ paddingTop: "2%", paddingBottom: "3%" }}
+          >
             {mcqData.map((mcq) => (
-              <div key={mcq.question} className="mb-4" style={{ paddingTop : "1%" }}>
-                <div> Q) {mcq.question}</div>
-                <Form.Check
-                  type="radio"
-                  label={mcq.options.A}
-                  name={`question-${mcq.question}`}
-                  onChange={() => handleOptionChange(mcq.question, mcq.options.A)}
-                  checked={answers[mcq.question] === mcq.options.A}
-                />
-                <Form.Check
-                  type="radio"
-                  label={mcq.options.B}
-                  name={`question-${mcq.question}`}
-                  onChange={() => handleOptionChange(mcq.question, mcq.options.B)}
-                  checked={answers[mcq.question] === mcq.options.B}
-                />
-                <Form.Check
-                  type="radio"
-                  label={mcq.options.C}
-                  name={`question-${mcq.question}`}
-                  onChange={() => handleOptionChange(mcq.question, mcq.options.C)}
-                  checked={answers[mcq.question] === mcq.options.C}
-                />
-                <Form.Check
-                  type="radio"
-                  label={mcq.options.D}
-                  name={`question-${mcq.question}`}
-                  onChange={() => handleOptionChange(mcq.question, mcq.options.D)}
-                  checked={answers[mcq.question] === mcq.options.D}
-                />
+              <div
+                key={mcq.question}
+                className="mb-4"
+                style={{ fontSize: "1rem" }} // Smaller font size for questions
+              >
+                <div className="fw-bold mb-2">
+                  Q) {mcq.question}
+                </div>
+                <div className="d-flex flex-wrap gap-2">
+                  {Object.entries(mcq.options).map(([key, option]) => (
+                    <Button
+                      key={key}
+                      variant={
+                        answers[mcq.question] === option
+                          ? "primary"
+                          : "outline-secondary"
+                      }
+                      className="btn-sm text-truncate" // Smaller button with truncation for long text
+                      style={{
+                        minWidth: "150px",
+                        fontSize: "0.85rem", // Smaller font for options
+                      }}
+                      onClick={() => handleOptionChange(mcq.question, option)}
+                    >
+                      {option}
+                    </Button>
+                  ))}
+                </div>
               </div>
             ))}
-            <Button type="submit" variant="primary" disabled={isSubmitting}>
+            <Button type="submit" variant="success" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit"}
             </Button>
             {loading && <div className="loading-spinner">Processing...</div>}
