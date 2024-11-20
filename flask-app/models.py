@@ -8,6 +8,7 @@ class URL(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     url = db.Column(db.String(2048), unique=True, nullable=False)  # Store unique URLs
     title = db.Column(db.String(512), nullable=True)  # Page title
+    hit_count = db.Column(db.Integer, nullable=True ,default = 0)
     created_at = db.Column(db.DateTime, server_default=db.func.now())
 
     # Relationship to access MCQs linked to this URL
