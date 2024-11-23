@@ -42,4 +42,4 @@ def home():
                 f"App is running on host: {request.host}")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='3.99.223.190', port=5000)
