@@ -8,10 +8,10 @@ from sqlalchemy.sql import text  # Import text for raw SQL
 import os
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS to allow React to communicate with Flask
+CORS(app, origins="http://3.98.57.215")# Enable CORS to allow React to communicate with Flask
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
+app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:jaiman123@127.0.0.1:5432/web_scraper"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
