@@ -6,12 +6,15 @@ from flask_migrate import Migrate  # Import Migrate
 from models import db
 from sqlalchemy.sql import text  # Import text for raw SQL
 import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Loads environment variables from the .env file
 
 app = Flask(__name__)
-CORS(app, origins="http://3.98.57.215")# Enable CORS to allow React to communicate with Flask
+CORS(app, origins=os.getenv('CORS_ORIGIN'))# Enable CORS to allow React to communicate with Flask
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://postgres:jaiman123@127.0.0.1:5432/web_scraper"
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URL')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 # Initialize extensions
@@ -42,4 +45,4 @@ def home():
                 f"App is running on host: {request.host}")
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host=os.getenv('APP_HOST'), port=os.getenv('APP_PORT'))
