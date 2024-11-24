@@ -21,7 +21,7 @@ const Home = () => {
     setLoading(true); // Show loading spinner
 
     try {
-      const res = await axios.post("http://127.0.0.1:5000//api/submit-url", {
+      const res = await axios.post("http://3.98.57.215:5000//api/submit-url", {
         url,
       });
       console.log("Response : ", res.data);
