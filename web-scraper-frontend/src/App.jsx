@@ -1,6 +1,7 @@
 import React from "react"
 import Home from "./components/Home"
 import Navbar from "./components/Navbar"
+import NotFound from "./components/NotFound";
 import McqPage from "./components/McqPage";
 import "./styles/App.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -14,6 +15,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home />} /> 
         <Route path="/mcq" element={<McqPage />} />
+        <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
