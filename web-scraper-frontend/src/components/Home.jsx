@@ -21,7 +21,7 @@ const Home = () => {
     setLoading(true); // Show loading spinner
 
     try {
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/submit-url`, {
+      const res = await axios.post("http://15.222.14.129:5000//api/submit-url", {
         url,
       });
       console.log("Response : ", res.data);
