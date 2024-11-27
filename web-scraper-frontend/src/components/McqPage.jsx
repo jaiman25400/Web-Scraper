@@ -32,7 +32,7 @@ const McqPage = () => {
     setLoading(true);
     console.log("User Answers:", answers);
     try {
-      const res = await axios.post("http://3.98.57.215:5000/api/submit-answers", {
+      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/submit-answers`, {
         answers,
         url,
       });
