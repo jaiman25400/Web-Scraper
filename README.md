@@ -33,15 +33,52 @@ This project enables users to scrape data from websites, process it on the backe
 ### Frontend Setup
 1. Clone the repository and switch to the `FrontEnd-React` branch:  
    ```bash
-   git clone -b FrontEnd-React <repository-url>
+   git clone -b FrontEnd-React https://github.com/jaiman25400/Web-Scraper.git
    cd web-scraper
 
 2. Install dependencies:
    ```bash
    npm install
+
 3. Start the development server:
    ```bash
    npm start
+
 4. Open your browser and navigate to http://localhost:3000.
+
+### Backend Setup
+1. Clone the repository and switch to the BackEnd-Flask branch:
+   ```bash
+   git clone -b BackEnd-Flask  https://github.com/jaiman25400/Web-Scraper.git
+   cd web-scraper
+
+2. Create a virtual environment and activate it:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+
+4. Run the Flask server:
+   ```bash
+   flask run
+
+5. The backend will run at http://localhost:5000.
+
+### Usage
+Start both the frontend and backend servers.
+Navigate to the frontend application in your browser.
+Configure the scraping parameters using the UI.
+View the scraped data and visualizations.
+
+   
+   
+   
+
+
+
+
 
 
