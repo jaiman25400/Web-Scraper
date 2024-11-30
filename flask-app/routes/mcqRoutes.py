@@ -12,7 +12,6 @@ mcq_routes = Blueprint('mcq_routes', __name__)
 def submit_url():
     data = request.get_json()
     user_url = data.get('url')
-    print("Received URL:", user_url)
     
     # Check if the URL and its data exist in Redis
     cached_data = redis_client.get(user_url)
@@ -83,7 +82,7 @@ def submit_url():
 
     # Step 3: Save new URL and MCQs to the database
     try:
-        new_url = URL(url=user_url, title=title)
+        new_url = URL(url=user_url, title=title,hit_count=1)
         db.session.add(new_url)
         db.session.flush()  # Ensure `new_url.id` is populated
 
